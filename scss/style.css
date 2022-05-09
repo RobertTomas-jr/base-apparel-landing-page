@@ -1,0 +1,215 @@
+/* $breakpoints-up: (
+    "xtra-large": 90em //1440px
+);
+ */
+/* //for desktop view
+@mixin breakpoints($size) {
+    @media(max-width: map-get($breakpoints,$size)){
+        @content;
+    }
+}  */
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.main {
+  background: url(/images/bg-pattern-desktop.svg), linear-gradient(135deg, hsl(0deg, 0%, 100%), hsl(0deg, 100%, 98%));
+  background-position: bottom left;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(0deg, 100%, 98%);
+}
+.main .banner {
+  width: 100%;
+  height: 100%;
+}
+.main .banner .img-logo {
+  width: 100px;
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin: 1.8em;
+}
+.main .banner .hero-mobile {
+  width: 100%;
+  height: 250px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.main .banner .hero-content {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  color: hsl(0deg, 36%, 70%);
+  padding: 0 2em 3em 2em;
+}
+.main .banner .hero-content h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.8rem;
+  line-height: 1.1;
+  margin-top: 1.5em;
+  font-size: clamp(1.2rem, 1.75rem + 2.5vw, 3.3rem);
+}
+.main .banner .hero-content h1 .one {
+  color: hsl(0deg, 36%, 70%);
+  font-weight: 300;
+}
+.main .banner .hero-content h1 .two {
+  color: hsl(0deg, 6%, 24%);
+  font-weight: 600;
+}
+.main .banner .hero-content p {
+  line-height: 1.4;
+  font-size: 0.9rem;
+}
+.main .banner .hero-content form {
+  position: relative;
+  padding-top: 0.6em;
+}
+.main .banner .hero-content form .input-section input[type=email] {
+  padding: 1em 1.6em;
+  font-size: 0.9rem;
+  width: 100%;
+  border-radius: 25px;
+  border: 2px solid hsla(0deg, 6%, 24%, 0.2);
+  outline: none;
+  font-family: "Josefin Sans", sans-serif;
+  color: hsl(0deg, 36%, 70%);
+  margin-bottom: 0.3em;
+  background-color: hsl(0deg, 100%, 98%);
+}
+.main .banner .hero-content form .input-section .text-err {
+  text-align: left;
+  font-size: 0.8rem;
+  color: hsl(0deg, 93%, 68%);
+  padding-left: 2em;
+  opacity: 0.6;
+  font-weight: 600;
+  display: none;
+}
+.main .banner .hero-content form .button-err {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.6em;
+}
+.main .banner .hero-content form .button-err .img-err {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.4em;
+  opacity: 9;
+  display: none;
+}
+.main .banner .hero-content form .button-err button {
+  background: linear-gradient(135deg, hsl(0deg, 80%, 86%), hsl(0deg, 74%, 74%));
+  border: 0;
+  border-radius: 25px;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  padding: 0.9em 2.6em;
+  cursor: pointer;
+  box-shadow: 0 15px 12px 0 hsla(0deg, 80%, 86%, 0.7);
+}
+.main .banner .hero-content form .button-err button:hover {
+  background: hsl(0deg, 80%, 86%);
+  opacity: 0.7;
+}
+.main .banner .hero-content form .button-err button img {
+  width: 12px;
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.main .hero-desktop {
+  display: none;
+}
+
+@media (min-width: 23.5em) {
+  .main .banner .hero-mobile {
+    display: none;
+  }
+  .main .banner .hero-content h1 {
+    margin: auto;
+    margin-top: 1.5em;
+    line-height: 1.1;
+  }
+  .main .banner .hero-content p {
+    width: 100%;
+    margin: 1em auto;
+  }
+  .main .banner .hero-desktop {
+    display: block;
+    width: 100%;
+    height: 350px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: 0 20%;
+       object-position: 0 20%;
+  }
+}
+@media (min-width: 48em) {
+  .main .banner {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "logo herodesktop" "herocontent herodesktop";
+  }
+  .main .banner .hero-mobile {
+    display: none;
+  }
+  .main .banner .img-logo {
+    grid-area: logo;
+  }
+  .main .banner .hero-content {
+    grid-area: herocontent;
+    margin-top: 0;
+    text-align: left;
+  }
+  .main .banner .hero-desktop {
+    grid-area: herodesktop;
+    width: 100%;
+    height: 100vh;
+  }
+}
+@media (min-width: 62em) {
+  .main .banner {
+    width: 100%;
+    height: 100vh;
+    grid-template-columns: 60% 40%;
+  }
+  .main .banner .img-logo {
+    margin-left: 12em;
+    margin-top: 3em;
+    width: 135px;
+    height: 33px;
+  }
+  .main .banner .hero-content {
+    padding-left: 12em;
+    padding-right: 10em;
+    text-align: left;
+  }
+  .main .banner .hero-content .text-content {
+    width: 75%;
+  }
+  .main .banner .hero-desktop {
+    height: 100%;
+    -o-object-fit: fill;
+       object-fit: fill;
+  }
+}/*# sourceMappingURL=style.css.map */

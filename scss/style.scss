@@ -1,0 +1,221 @@
+@use 'components' as *;
+
+.main {
+    background: url(/images/bg-pattern-desktop.svg),$linear1;
+    background-position: bottom left;
+    @include widthheight;
+    background-color: hsl(0, 100%, 98%);
+    //display: flex;
+  
+    .banner {
+        @include widthheight;
+       
+        .img-logo {
+            width: 100px;
+            height: 20px;
+            object-fit: contain;
+            margin: 1.8em;
+           
+        }
+        .hero-mobile {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+        }
+        
+        .hero-content {
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            color: $DesaturatedRed;
+            padding: 0 2em 3em 2em;
+           
+            h1 {
+                text-transform: uppercase;
+                letter-spacing: 0.8rem;
+                line-height: 1.1;
+                margin-top: 1.5em;
+                font-size: clamp(1.2rem, 1.75rem + 2.5vw, 3.3rem);
+
+                .one {
+                    color: $DesaturatedRed;
+                    font-weight: 300;
+                }
+                .two {
+                    color: $DarkGrayish;
+                    font-weight: 600;
+                }
+            }
+            p {
+                line-height: 1.4;
+                font-size: 0.9rem;
+            }
+            form {
+                position: relative;
+                padding-top: 0.6em;
+                .input-section {
+                    input[type = "email"]{
+                        padding: 1em 1.6em;
+                        font-size: 0.9rem;
+                        width: 100%;
+                        border-radius: 25px;
+                        border: 2px solid hsla(0, 6%, 24%, 0.2);
+                        outline: none;
+                        font-family: 'Josefin Sans', sans-serif;
+                        color: $DesaturatedRed;
+                        margin-bottom: 0.3em;
+                        background-color: hsl(0, 100%, 98%);
+                    }
+                    .text-err {
+                        text-align: left;
+                        font-size: 0.8rem;
+                        color: $SoftRed;
+                        padding-left: 2em;
+                        opacity: 0.6;
+                        font-weight: 600;
+                        display: none;
+                    } 
+                    
+                }
+                .button-err  {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding-top: 0.6em;
+    
+                    .img-err {
+                        width: 24px;
+                        height: 24px;
+                        margin-right: 0.4em;
+                        opacity: 9;
+                        display: none;
+                    }
+                    button {
+                        background: $linear2;
+                        border: 0;
+                        border-radius: 25px;
+                        outline: none;
+                        @include widthheight;
+                        padding: 0.9em 2.6em;
+                        cursor: pointer;
+                        box-shadow: 0 15px 12px 0 hsla(0, 80%, 86%, 0.7);
+
+                        &:hover {
+                            background: hsl(0, 80%, 86%);
+                            opacity: 0.7;
+                        }
+                        img {
+                            width: 12px;
+                            height: 20px;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+        }
+    } 
+    .hero-desktop {
+        display: none;
+    }
+}
+
+
+@include breakpoints(small){
+    .main {
+        .banner {
+             .hero-mobile {
+              display: none;
+            }
+             .hero-content {
+            
+                h1 {
+                    margin: auto;
+                    margin-top: 1.5em;
+                    line-height: 1.1;
+                }
+                p {
+                    width: 100%;
+                    margin: 1em auto;
+                   
+                }
+            }  
+            .hero-desktop {
+                display: block;
+                width: 100%;
+                height: 350px;
+                object-fit: cover;
+                object-position: 0 20%;
+            }
+        } 
+    }
+}  
+//media query for 768px-991px width
+@include breakpoints(medium){
+    .main {
+     
+        .banner {
+           
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-template-areas: 
+            "logo herodesktop"
+            "herocontent herodesktop";
+            
+            .hero-mobile {
+              display: none;
+            }
+            .img-logo {
+                grid-area: logo;
+              
+            }
+            .hero-content {
+                grid-area: herocontent;
+               // width: 360px;
+                margin-top: 0;
+                text-align: left;
+                
+            }
+            .hero-desktop {
+                grid-area: herodesktop;
+                width: 100%;
+                height: 100vh;
+            }
+        }
+    }
+}
+
+//992-1440
+@include breakpoints(large){
+    .main {
+        .banner {
+            width: 100%;
+            height: 100vh;
+            grid-template-columns: 60% 40%;
+
+            .img-logo {
+                margin-left: 12em;
+                margin-top: 3em;
+                width: 135px;
+                height: 33px;
+            }
+
+            .hero-content {
+                padding-left: 12em;
+                padding-right: 10em;
+                text-align: left;
+
+               .text-content {
+                   width: 75%;
+               }
+            }
+            .hero-desktop {
+                height: 100%;
+                object-fit: fill;
+            }
+        }
+    }
+}

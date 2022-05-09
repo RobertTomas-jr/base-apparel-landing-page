@@ -1,0 +1,21 @@
+$breakpoints: (
+    "small": 23.5em, //376px
+    "medium": 48em, //768px
+    "large": 62em, //992px
+    "xtralarge": 90em //1440px
+);
+/* $breakpoints-up: (
+    "xtra-large": 90em //1440px
+);
+ */
+@mixin breakpoints($size) {
+    @media(min-width: map-get($breakpoints,$size)){
+        @content;
+    }
+}
+/* //for desktop view
+@mixin breakpoints($size) {
+    @media(max-width: map-get($breakpoints,$size)){
+        @content;
+    }
+}  */
